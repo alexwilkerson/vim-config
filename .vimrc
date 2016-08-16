@@ -116,3 +116,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " no svg support, suppress warnings
 let g:syntastic_html_tidy_ignore_errors = [ '<svg> is not recognized!', '<path> is not recognized!', 'discarding unexpected <svg>', 'discarding unexpected </svg>', 'discarding unexpected <path>']
+" ignore alphabetical ordering in css
+let g:syntastic_css_csslint_args = "--ignore=order-alphabetical"
