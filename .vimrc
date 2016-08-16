@@ -114,3 +114,5 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" no svg support, suppress warnings
+let g:syntastic_html_tidy_ignore_errors = [ '<svg> is not recognized!', '<path> is not recognized!', 'discarding unexpected <svg>', 'discarding unexpected </svg>', 'discarding unexpected <path>']
