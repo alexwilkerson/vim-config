@@ -27,6 +27,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 Plug 'ap/vim-css-color'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
 call plug#end()
 
 set nocompatible
@@ -112,9 +114,17 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " no svg support, suppress warnings
-let g:syntastic_html_tidy_ignore_errors = [ '<svg> is not recognized!', '<path> is not recognized!', 'discarding unexpected <svg>', 'discarding unexpected </svg>', 'discarding unexpected <path>']
+let g:syntastic_html_checkers=['']
+" let g:syntastic_html_tidy_ignore_errors = [ '<svg> is not recognized!', '<path> is not recognized!', 'discarding unexpected <svg>', 'discarding unexpected </svg>', 'discarding unexpected <path>']
 " ignore alphabetical ordering in css
 let g:syntastic_css_csslint_args = "--ignore=order-alphabetical"
+
+" vim-css3-syntax highlight fix
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
