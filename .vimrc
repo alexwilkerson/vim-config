@@ -11,6 +11,10 @@ let g:plug_pwindow  = 'vertical rightbelow new'
 
 call plug#begin(s:bundle_dir)
 Plug 'tpope/vim-sensible'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
 set nocompatible
@@ -51,6 +55,8 @@ set scrolloff   =4
 set sidescroll  =5
 set smartcase
 
+set clipboard   =unnamed    " share clipboard with osx
+
 set list                    " show non-printable characters
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
@@ -72,3 +78,6 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " mappings
 inoremap jj       <esc>
+
+" config option for javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
