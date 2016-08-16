@@ -1,12 +1,11 @@
-
 " A minimal vimrc.
 "
 
 " autoload background from base16 shell script
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" if filereadable(expand("~/.vimrc_background"))
+" let base16colorspace=256
+"  source ~/.vimrc_background
+"endif
 
 " Plug
 let s:bundle_dir    = '~/.vim/bundle'
@@ -23,6 +22,11 @@ Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'chriskempson/base16-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/syntastic'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 set nocompatible
@@ -43,6 +47,9 @@ set display     =lastline   " show as much as possible of the last line
 
 set showmode                " show current mode in command-line
 set showcmd                 " show already typed keys when more are expected
+set number                  " show numbers on side
+" change number colors to grey
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 set incsearch               " highlight while searching with / or ?
 set hlsearch                " keep matches highlighted
@@ -86,6 +93,24 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " mappings
 inoremap jj       <esc>
+nmap <C-L> :bn<CR> " map (ctrl + n) => :bn // buffer next
+nmap <C-J> :bp<CR> " map (ctrl + p) => :bp // buffer prev
+map <leader>f   :FZF<cr>
 
 " config option for javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" airline config
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16_eighties'
+
+" syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
