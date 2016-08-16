@@ -1,6 +1,12 @@
-"
+
 " A minimal vimrc.
 "
+
+" autoload background from base16 shell script
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Plug
 let s:bundle_dir    = '~/.vim/bundle'
@@ -15,6 +21,8 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'chriskempson/base16-vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 set nocompatible
